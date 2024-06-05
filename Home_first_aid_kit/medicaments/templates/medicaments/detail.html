@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ medicament.name }}
+{% endblock %}
+{% block content %}
+    <h1>{{ medicament.name }}</h1>
+    <p>Инструкция: {{ medicament.instruction }}</p>
+{% endblock %}

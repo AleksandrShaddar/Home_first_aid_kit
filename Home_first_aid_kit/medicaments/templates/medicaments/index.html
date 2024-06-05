@@ -3,6 +3,10 @@
 {% block content %}
     <h3>Найдено медикаментов {{ quantity }} шт.</h3>
     {% for item in medicaments %}
-        <li>{{ item }}</li>
+    <li>
+        <a href="{% url 'detail' item.id %}">{{ item.name }}</a>
+        Количество: {{ item.quantity }}
+        Годен до: {{ item.expiration_date }}
+    </li>
     {% endfor %}
 {% endblock %}
