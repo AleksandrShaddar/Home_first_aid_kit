@@ -6,5 +6,6 @@ from medicaments.models import Medicament
 
 def main(request):
     medicaments = Medicament.objects.all()
-    context = {'medicaments': medicaments}
+    quantity = len(medicaments)
+    context = {'medicaments': medicaments, 'quantity': quantity}
     return render(request, 'medicaments/index.html', context)

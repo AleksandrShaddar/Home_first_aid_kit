@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Домашняя аптечка</title>
-</head>
-<body>
-    {{ medicaments }}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Найдено медикаментов {{ quantity }} шт.</h3>
+    {% for item in medicaments %}
+        <li>{{ item }}</li>
+    {% endfor %}
+{% endblock %}
