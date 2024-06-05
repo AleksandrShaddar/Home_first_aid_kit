@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h1>Поиск медикаментов</h1>
+    <form method="GET" action="{% url 'search_results' %}">
+        <input type="text" name="search" placeholder="Введите название">
+        <input type="submit" value="Поиск">
+    </form>
     <h3>Найдено медикаментов {{ quantity }} шт.</h3>
     {% for item in medicaments %}
     <li>

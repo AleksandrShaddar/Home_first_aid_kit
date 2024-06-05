@@ -15,3 +15,12 @@ def detail(request, medicament_id):
     medicament = Medicament.objects.get(pk=medicament_id)
     context = {'medicament': medicament}
     return render(request, 'medicaments/detail.html', context)
+
+
+def search_results(request):
+    search = request.GET.get('search')
+    if search is not '':
+        medicaments = Medicament.objects.filter(name__icontains=search)
+        context = {'medicaments': medicaments, 'search': search}
+        return render(request, 'medicaments/search_results.html', context)
+    return main(request)

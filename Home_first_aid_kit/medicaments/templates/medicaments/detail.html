@@ -5,4 +5,7 @@
 {% block content %}
     <h1>{{ medicament.name }}</h1>
     <p>Инструкция: {{ medicament.instruction }}</p>
+    <form method="GET" action="{% url 'main' %}">
+        <input type="submit" value="На главную">
+    </form>
 {% endblock %}
