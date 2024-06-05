@@ -6,13 +6,17 @@
     <h1>Результаты поиска</h1>
     <p>Результаты для запроса: "{{ search }}"</p>
     <ul>
-        {% for medicament in medicaments %}
-            <li>
-                <h2>{{ medicament.name }}</h2>
-                <p>Количество: {{ medicament.quantity }}</p>
-                <p>Годен до: {{ medicament.expiration_date }}</p>
-            </li>
-        {% endfor %}
+        {% if medicaments %}
+            {% for medicament in medicaments %}
+                <li>
+                    <h2>{{ medicament.name }}</h2>
+                    <p>Количество: {{ medicament.quantity }}</p>
+                    <p>Годен до: {{ medicament.expiration_date }}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>Ничего не найдено</p>
+        {% endif %}
     </ul>
     <form method="GET" action="{% url 'main' %}">
         <input type="submit" value="На главную">
