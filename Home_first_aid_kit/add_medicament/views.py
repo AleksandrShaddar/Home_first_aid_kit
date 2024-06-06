@@ -28,10 +28,10 @@ def add_medicament(request):
                     image=image
                 )
                 medicament.save()
-                message = 'Медикамент успешно добавлен'
+                message = f'Медикамент "{medicament.name}" успешно добавлен!'
                 return render(request, 'add_medicament/add_medicament.html', {'message': message})
             else:
-                message = 'Медикамент с таким названием уже существует'
+                message = 'Медикамент с таким названием уже существует!'
                 return render(request, 'add_medicament/add_medicament.html', {'message': message})
     else:
         form = AddMedicamentForm()
