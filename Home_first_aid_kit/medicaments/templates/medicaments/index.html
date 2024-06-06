@@ -7,11 +7,11 @@
         <input type="submit" value="Поиск">
     </form>
     <h3>Найдено медикаментов {{ quantity }} шт.</h3>
-    {% for item in medicaments %}
+    {% for medicament in medicaments %}
     <li>
-        <a href="{% url 'detail' item.id %}">{{ item.name }}</a>
-        Количество: {{ item.quantity }}
-        Годен до: {{ item.expiration_date }}
+        <a href="{% url 'detail' medicament.id %}">{{ medicament.name }}</a>
+        Количество: {{ medicament.quantity }}
+        Годен до: {{ medicament.expiration_date }}
     </li>
     {% endfor %}
 {% endblock %}
