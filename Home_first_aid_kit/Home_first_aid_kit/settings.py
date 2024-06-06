@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'medicaments',
     'add_medicament',
+    'remove_and_change',
 ]
 
 MIDDLEWARE = [

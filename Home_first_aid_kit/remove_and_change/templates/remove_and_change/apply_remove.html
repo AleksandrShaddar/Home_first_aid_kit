@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Подтверждение удаления
+{% endblock %}
+
+{% block content %}
+    <h3> {{ medicament.name }} будет удален безвозвратно!</h3>
+    <form method="GET" action="{% url 'remove_medicament' medicament.id %}">
+        <input type="submit" value="Подтвердить">
+    </form><br>
+    <form method="GET" action="{% url 'main' %}">
+        <input type="submit" value="На главную">
+    </form><br>
+{% endblock %}

@@ -7,5 +7,8 @@
     <p>Инструкция: {{ medicament.instruction }}</p>
     <form method="GET" action="{% url 'main' %}">
         <input type="submit" value="На главную">
+    </form><br>
+    <form method="GET" action="{% url 'apply_remove' medicament.id %}">
+        <input type="submit" value="Удалить">
     </form>
 {% endblock %}

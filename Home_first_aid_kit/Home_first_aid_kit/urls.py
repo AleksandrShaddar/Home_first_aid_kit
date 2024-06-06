@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('medicaments.urls')),
     path('add_medicament/', include('add_medicament.urls')),
+    path('remove_medicament/', include('remove_and_change.urls')),
 ]
