@@ -6,8 +6,8 @@
         <input type="text" name="search" placeholder="Введите название">
         <input type="submit" value="Поиск">
     </form><br>
-    <form>
-        <button formaction="add_medicament/">Добавить</button>
+    <form method="GET" action="{% url 'add_medicament' %}">
+        <input type="submit" value="Добавить">
     </form><br>
     <h3>Найдено медикаментов {{ quantity }} шт.</h3>
     {% for medicament in medicaments %}
