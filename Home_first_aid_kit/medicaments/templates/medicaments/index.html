@@ -5,7 +5,10 @@
     <form method="GET" action="{% url 'search_results' %}">
         <input type="text" name="search" placeholder="Введите название">
         <input type="submit" value="Поиск">
-    </form>
+    </form><br>
+    <form>
+        <button formaction="add_medicament/">Добавить</button>
+    </form><br>
     <h3>Найдено медикаментов {{ quantity }} шт.</h3>
     {% for medicament in medicaments %}
     <li>

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from medicaments.models import Medicament
 
+
 # Create your views here.
 
 
@@ -20,7 +21,10 @@ def detail(request, medicament_id):
 def search_results(request):
     search = request.GET.get('search')
     if search is not '':
-        medicaments = Medicament.objects.filter(name__icontains=search)
+        medicaments = (Medicament.objects.filter(name__icontains=search) |
+                       Medicament.objects.filter(type_medicament__icontains=search) |
+                       Medicament.objects.filter(category__icontains=search)
+                       )
         context = {'medicaments': medicaments, 'search': search}
         return render(request, 'medicaments/search_results.html', context)
     return main(request)
