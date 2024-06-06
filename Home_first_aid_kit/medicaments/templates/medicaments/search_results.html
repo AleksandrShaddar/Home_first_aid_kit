@@ -9,7 +9,7 @@
         {% if medicaments %}
             {% for medicament in medicaments %}
                 <li>
-                    <h2>{{ medicament.name }}</h2>
+                    <h2><a href="{% url 'detail' medicament.id %}">{{ medicament.name }}</a></h2>
                     <p>Количество: {{ medicament.quantity }}</p>
                     <p>Годен до: {{ medicament.expiration_date }}</p>
                 </li>
