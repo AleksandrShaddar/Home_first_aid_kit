@@ -4,11 +4,23 @@
 {% endblock %}
 {% block content %}
     <h1>{{ medicament.name }}</h1>
+    {% if medicament.image %}
+        <img src="{{MEDIA_URL}}{{medicament.image.url}}" alt="{{ medicament.name }}">
+    {% else %}
+        <img src="/media/No_image.png" alt="Нет изображения">
+    {% endif %}
+    <p>Количество: {{ medicament.quantity }}</p>
+    <p>Годен до: {{ medicament.expiration_date }}</p>
+    <p>Тип: {{ medicament.type_medicament }}</p>
+    <p>Категория: {{ medicament.category }}</p>
     <p>Инструкция: {{ medicament.instruction }}</p>
-    <form method="GET" action="{% url 'main' %}">
-        <input type="submit" value="На главную">
+    <form method="GET" action="{% url 'change_medicament' medicament.id %}">
+        <input type="submit" value="Редактировать">
     </form><br>
     <form method="GET" action="{% url 'apply_remove' medicament.id %}">
         <input type="submit" value="Удалить">
+    </form><br>
+    <form method="GET" action="{% url 'main' %}">
+        <input type="submit" value="На главную">
     </form>
 {% endblock %}

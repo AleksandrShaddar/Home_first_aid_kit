@@ -12,6 +12,8 @@
                     <h2><a href="{% url 'detail' medicament.id %}">{{ medicament.name }}</a></h2>
                     <p>Количество: {{ medicament.quantity }}</p>
                     <p>Годен до: {{ medicament.expiration_date }}</p>
+                    <p>Тип: {{ medicament.type_medicament }}</p>
+                    <p>Категория: {{ medicament.category }}</p>
                 </li>
             {% endfor %}
         {% else %}

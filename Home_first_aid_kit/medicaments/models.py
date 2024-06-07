@@ -10,8 +10,8 @@ class Medicament(models.Model):
     expiration_date = models.DateField()
     instruction = models.TextField()
     type_medicament = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='medicaments/', null=True, blank=True)
+    category = models.TextField()
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return f'Name: {self.name}, quantity: {self.quantity}, expiration_date: {self.expiration_date}'
