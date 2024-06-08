@@ -15,7 +15,7 @@ def apply_remove(request, medicament_id):
 def remove_medicament(request, medicament_id):
     medicament = Medicament.objects.get(id=medicament_id)
     medicament.delete()
-    context = {'message': f' {medicament.name} успешно удален!'}
+    context = {'message': f' {medicament.name.capitalize()} успешно удален!'}
     return render(request, 'remove_and_change/remove.html', context)
 
 
@@ -32,26 +32,26 @@ def change_medicament(request, medicament_id):
             type_medicament = form.cleaned_data['type_medicament']
             category = form.cleaned_data['category']
             image = form.cleaned_data['image']
-            medicament.name = name
+            medicament.name = name.lower()
             medicament.quantity = quantity
             medicament.expiration_date = expiration_date
             medicament.instruction = instruction
-            medicament.type_medicament = type_medicament
-            medicament.category = category
+            medicament.type_medicament = type_medicament.lower()
+            medicament.category = category.lower()
             if image is not None:
                 medicament.image = image
             medicament.save()
-            message = f'Медикамент "{medicament.name}" успешно изменен!'
+            message = f'Медикамент "{medicament.name.capitalize()}" успешно изменен!'
             return render(request,
                           'remove_and_change/success_change.html',
                           {'message': message, 'medicament': medicament})
     else:
-        form = AddMedicamentForm(initial={'name': medicament.name,
+        form = AddMedicamentForm(initial={'name': medicament.name.capitalize(),
                                           'quantity': medicament.quantity,
                                           'expiration_date': medicament.expiration_date,
                                           'instruction': medicament.instruction,
-                                          'type_medicament': medicament.type_medicament,
-                                          'category': medicament.category
+                                          'type_medicament': medicament.type_medicament.capitalize(),
+                                          'category': medicament.category.capitalize()
                                           }
                                  )
     return render(request,

@@ -19,12 +19,19 @@ def detail(request, medicament_id):
 
 
 def search_results(request):
-    search = request.GET.get('search')
-    if search is not '':
-        medicaments = (Medicament.objects.filter(name__icontains=search) |
-                       Medicament.objects.filter(type_medicament__icontains=search) |
-                       Medicament.objects.filter(category__icontains=search)
-                       )
-        context = {'medicaments': medicaments, 'search': search}
+    name = request.GET.get('name')
+    type_med = request.GET.get('type')
+    category = request.GET.get('category')
+    if name is not None:
+        medicaments = Medicament.objects.filter(name__icontains=name.lower())
+        context = {'medicaments': medicaments, 'search': name, 'message': 'названию'}
+        return render(request, 'medicaments/search_results.html', context)
+    elif type_med is not None:
+        medicaments = Medicament.objects.filter(type_medicament__icontains=type_med.lower())
+        context = {'medicaments': medicaments, 'search': type_med, 'message': 'типу'}
+        return render(request, 'medicaments/search_results.html', context)
+    elif category is not None:
+        medicaments = Medicament.objects.filter(category__icontains=category.lower())
+        context = {'medicaments': medicaments, 'search': category, 'message': 'категории'}
         return render(request, 'medicaments/search_results.html', context)
     return main(request)

@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}
-    {{ medicament.name }}
+    {{ medicament.name.capitalize }}
 {% endblock %}
 {% block content %}
-    <h1>{{ medicament.name }}</h1>
+    <h1>{{ medicament.name.capitalize }}</h1>
     {% if medicament.image %}
         <img src="{{MEDIA_URL}}{{medicament.image.url}}" alt="{{ medicament.name }}">
     {% else %}
@@ -11,8 +11,8 @@
     {% endif %}
     <p>Количество: {{ medicament.quantity }}</p>
     <p>Годен до: {{ medicament.expiration_date }}</p>
-    <p>Тип: {{ medicament.type_medicament }}</p>
-    <p>Категория: {{ medicament.category }}</p>
+    <p>Тип: {{ medicament.type_medicament.capitalize }}</p>
+    <p>Категория: {{ medicament.category.capitalize }}</p>
     <p>Инструкция: {{ medicament.instruction }}</p>
     <form method="GET" action="{% url 'change_medicament' medicament.id %}">
         <input type="submit" value="Редактировать">

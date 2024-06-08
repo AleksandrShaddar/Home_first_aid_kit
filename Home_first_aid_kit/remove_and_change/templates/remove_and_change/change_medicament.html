@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <h3>Редактирование медикамента "{{ medicament.name }}"</h3>
+    <h3>Редактирование медикамента "{{ medicament.name.capitalize }}"</h3>
     <form action="" method="post" enctype="multipart/form-data">
       <p>{{ message }}</p>
       {% csrf_token %}

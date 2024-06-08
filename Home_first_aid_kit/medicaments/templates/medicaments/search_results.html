@@ -3,17 +3,17 @@
     Результаты поиска
 {% endblock %}
 {% block content %}
-    <h1>Результаты поиска</h1>
+    <h1>Результаты поиска по {{ message }}</h1>
     <p>Результаты для запроса: "{{ search }}"</p>
     <ul>
         {% if medicaments %}
             {% for medicament in medicaments %}
                 <li>
-                    <h2><a href="{% url 'detail' medicament.id %}">{{ medicament.name }}</a></h2>
+                    <h2><a href="{% url 'detail' medicament.id %}">{{ medicament.name.capitalize }}</a></h2>
                     <p>Количество: {{ medicament.quantity }}</p>
                     <p>Годен до: {{ medicament.expiration_date }}</p>
-                    <p>Тип: {{ medicament.type_medicament }}</p>
-                    <p>Категория: {{ medicament.category }}</p>
+                    <p>Тип: {{ medicament.type_medicament.capitalize }}</p>
+                    <p>Категория: {{ medicament.category.capitalize }}</p>
                 </li>
             {% endfor %}
         {% else %}

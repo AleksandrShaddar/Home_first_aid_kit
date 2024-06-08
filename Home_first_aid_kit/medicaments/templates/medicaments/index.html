@@ -3,7 +3,15 @@
 {% block content %}
     <h1>Поиск медикаментов</h1>
     <form method="GET" action="{% url 'search_results' %}">
-        <input type="text" name="search" placeholder="Введите название">
+        <input type="text" name="name" placeholder="Поиск по названию">
+        <input type="submit" value="Поиск">
+    </form><br>
+    <form method="GET" action="{% url 'search_results' %}">
+        <input type="text" name="type" placeholder="Поиск по типу">
+        <input type="submit" value="Поиск">
+    </form><br>
+    <form method="GET" action="{% url 'search_results' %}">
+        <input type="text" name="category" placeholder="Поиск по категории">
         <input type="submit" value="Поиск">
     </form><br>
     <form method="GET" action="{% url 'add_medicament' %}">
@@ -12,7 +20,7 @@
     <h3>Найдено медикаментов {{ quantity }} шт.</h3>
     {% for medicament in medicaments %}
     <li>
-        <a href="{% url 'detail' medicament.id %}">{{ medicament.name }}</a>
+        <a href="{% url 'detail' medicament.id %}">{{ medicament.name.capitalize }}</a>
         Количество: {{ medicament.quantity }}
         Годен до: {{ medicament.expiration_date }}
     </li>
