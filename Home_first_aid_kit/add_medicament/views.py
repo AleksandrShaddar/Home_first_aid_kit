@@ -29,10 +29,11 @@ def add_medicament(request):
                 )
                 medicament.save()
                 message = f'Медикамент "{medicament.name}" успешно добавлен!'
-                return render(request, 'add_medicament/add_medicament.html', {'message': message})
+                return render(request, 'add_medicament/success_add.html', {'message': message})
             else:
-                message = 'Медикамент с таким названием уже существует!'
-                return render(request, 'add_medicament/add_medicament.html', {'message': message})
+                medicament = Medicament.objects.get(name=name)
+                message = f'Медикамент "{medicament.name}" уже существует!'
+                return render(request, 'add_medicament/fail_add.html', {'message': message, 'medicament': medicament})
     else:
         form = AddMedicamentForm()
     return render(request, 'add_medicament/add_medicament.html', {'form': form, 'message': message})

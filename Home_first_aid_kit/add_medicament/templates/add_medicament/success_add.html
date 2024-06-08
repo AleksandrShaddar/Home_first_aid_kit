@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Добавление медикамента
+{% endblock %}
+
+{% block content %}
+    <h1>{{ message }}</h1>
+    <form method="GET" action="{% url 'add_medicament' %}">
+        <input type="submit" value="Добавить еще">
+    </form><br>
+    <form method="GET" action="/">
+        <input type="submit" value="На главную">
+    </form>
+{% endblock %}
