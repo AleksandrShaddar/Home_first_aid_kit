@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block title %}
     {{ medicament.name.capitalize }}
 {% endblock %}
 {% block content %}
     <h1>{{ medicament.name.capitalize }}</h1>
     {% if medicament.image %}
-        <img src="{{MEDIA_URL}}{{medicament.image.url}}" alt="{{ medicament.name }}">
+        <img src="{{medicament.image.url}}" alt="{{ medicament.name }}">
     {% else %}
         <img src="/media/No_image.png" alt="Нет изображения">
     {% endif %}
