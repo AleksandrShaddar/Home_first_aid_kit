@@ -9,7 +9,7 @@
     <form method="GET" action="{% url 'detail' medicament.id %}">
         <input type="submit" value="Перейти к медикаменту">
     </form><br>
-    <form method="GET" action="/">
+    <form method="GET" action="{% url 'main' %}">
         <input type="submit" value="На главную">
     </form>
 {% endblock %}

@@ -12,7 +12,7 @@
       {{ form.as_p }}
       <input type="submit" value="Добавить">
     </form><br>
-    <form method="GET" action="/">
+    <form method="GET" action="{% url 'main' %}">
         <input type="submit" value="На главную">
     </form>
 {% endblock %}

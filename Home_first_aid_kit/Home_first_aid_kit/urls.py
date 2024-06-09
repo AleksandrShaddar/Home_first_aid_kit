@@ -19,7 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('medicaments.urls')),
+    path('', include('authentication.urls')),
+    path('medicaments/', include('medicaments.urls')),
     path('add_medicament/', include('add_medicament.urls')),
     path('remove_and_change/', include('remove_and_change.urls')),
 ]

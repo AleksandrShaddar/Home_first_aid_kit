@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'medicaments',
     'add_medicament',
     'remove_and_change',
+    'authentication',
 ]
 
 MIDDLEWARE = [
