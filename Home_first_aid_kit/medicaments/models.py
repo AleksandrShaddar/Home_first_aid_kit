@@ -1,5 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
-import datetime
+
 
 # Create your models here.
 
@@ -12,6 +13,7 @@ class Medicament(models.Model):
     type_medicament = models.CharField(max_length=100)
     category = models.TextField()
     image = models.ImageField(null=True, blank=True)
+    medicament_user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Name: {self.name}, quantity: {self.quantity}, expiration_date: {self.expiration_date}'
