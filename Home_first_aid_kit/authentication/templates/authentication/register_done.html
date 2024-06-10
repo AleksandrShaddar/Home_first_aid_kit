@@ -1,9 +1,12 @@
-{% extends 'base.html' %}
-{% block title %}
-    Добро пожаловать
-{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать</title>
+</head>
+<body>
     <p>Вы успешно зарегистрировались на сайте! Для входа в систему необходимо авторизоваться по
         <a href="{% url 'login_user' %}">ссылке</a>
     </p>
-{% endblock %}
+</body>
+</html>
