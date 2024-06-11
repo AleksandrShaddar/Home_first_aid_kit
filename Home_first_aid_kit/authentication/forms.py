@@ -32,3 +32,18 @@ class RegisterUserForm(forms.ModelForm):
         if get_user_model().objects.filter(email=email).exists():
             raise forms.ValidationError('Такой E-mail уже существует!')
         return email
+
+
+class ResetPasswordForm(forms.Form):
+    username = forms.CharField(max_length=50, label='Логин')
+    first_name = forms.CharField(max_length=50, label='Имя')
+    last_name = forms.CharField(max_length=50, label='Фамилия')
+    email = forms.CharField(max_length=50, label='Эл. почта')
+    password = forms.CharField(widget=forms.PasswordInput(), label='Новый пароль')
+    password2 = forms.CharField(widget=forms.PasswordInput(), label='Повторите пароль')
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('Пароли не совпадают')
+        return cd['password']
