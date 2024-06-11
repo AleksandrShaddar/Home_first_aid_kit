@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    <h3>Редактирование медикамента "{{ medicament.name.capitalize }}"</h3>
-    <form action="" method="post" enctype="multipart/form-data">
-      <p>{{ message }}</p>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Подтвердить">
-    </form><br>
+    {% if medicament.medicament_user == request.user %}
+        <h3>Редактирование медикамента "{{ medicament.name.capitalize }}"</h3>
+        <form action="" method="post" enctype="multipart/form-data">
+          <p>{{ message }}</p>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Подтвердить">
+        </form><br>
+    {% else %}
+        <h1>У Вас нет прав на редактирование этого медикамента!</h1>
+    {% endif %}
     <form method="GET" action="{% url 'main' %}">
         <input type="submit" value="На главную">
     </form>

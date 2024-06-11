@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block content %}
-    <h3> {{ medicament.name.capitalize }} будет удален безвозвратно!</h3>
-    <form method="GET" action="{% url 'remove_medicament' medicament.id %}">
-        <input type="submit" value="Подтвердить">
-    </form><br>
+    {% if medicament.medicament_user == request.user %}
+        <h3> {{ medicament.name.capitalize }} будет удален безвозвратно!</h3>
+        <form method="GET" action="{% url 'remove_medicament' medicament.id %}">
+            <input type="submit" value="Подтвердить">
+        </form><br>
+    {% else %}
+        <h1>У Вас нет прав на удаление этого медикамента!</h1>
+    {% endif %}
     <form method="GET" action="{% url 'main' %}">
         <input type="submit" value="На главную">
     </form><br>
