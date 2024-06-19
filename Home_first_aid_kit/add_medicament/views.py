@@ -37,7 +37,8 @@ def add_medicament(request):
                               'add_medicament/success_add.html',
                               {'message': message})
             else:
-                medicament = Medicament.objects.get(name=name.lower())
+                medicament = Medicament.objects.get(name=name.lower(),
+                                                    medicament_user=request.user)
                 message = f'Медикамент "{medicament.name.capitalize()}" уже существует!'
                 return render(request,
                               'add_medicament/fail_add.html',
