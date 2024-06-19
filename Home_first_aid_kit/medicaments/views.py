@@ -27,19 +27,22 @@ def search_results(request):
             name__icontains=name.lower(),
             medicament_user=request.user
         )
-        context = {'medicaments': medicaments, 'search': name, 'message': 'названию'}
+        context = {'medicaments': medicaments, 'search': name,
+                   'message': 'названию'}
         return render(request, 'medicaments/search_results.html', context)
     elif type_med is not None and type_med != '':
         medicaments = Medicament.objects.filter(
             type_medicament__icontains=type_med.lower(),
             medicament_user=request.user
         )
-        context = {'medicaments': medicaments, 'search': type_med, 'message': 'типу'}
+        context = {'medicaments': medicaments, 'search': type_med,
+                   'message': 'типу'}
         return render(request, 'medicaments/search_results.html', context)
     elif category is not None and category != '':
         medicaments = Medicament.objects.filter(
             category__icontains=category.lower(),
             medicament_user=request.user)
-        context = {'medicaments': medicaments, 'search': category, 'message': 'категории'}
+        context = {'medicaments': medicaments, 'search': category,
+                   'message': 'категории'}
         return render(request, 'medicaments/search_results.html', context)
     return main(request)

@@ -25,7 +25,4 @@ urlpatterns = [
     path('medicaments/', include('medicaments.urls')),
     path('add_medicament/', include('add_medicament.urls')),
     path('remove_and_change/', include('remove_and_change.urls')),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

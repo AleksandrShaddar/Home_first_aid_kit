@@ -17,7 +17,10 @@ def add_medicament(request):
             type_medicament = form.cleaned_data['type_medicament']
             category = form.cleaned_data['category']
             image = form.cleaned_data['image']
-            if not Medicament.objects.filter(name=name.lower(), medicament_user=request.user).exists():
+            if not Medicament.objects.filter(
+                    name=name.lower(),
+                    medicament_user=request.user
+                    ).exists():
                 medicament = Medicament(
                     name=name.lower(),
                     quantity=quantity,
@@ -30,11 +33,17 @@ def add_medicament(request):
                 )
                 medicament.save()
                 message = f'Медикамент "{name.capitalize()}" успешно добавлен!'
-                return render(request, 'add_medicament/success_add.html', {'message': message})
+                return render(request,
+                              'add_medicament/success_add.html',
+                              {'message': message})
             else:
                 medicament = Medicament.objects.get(name=name.lower())
                 message = f'Медикамент "{medicament.name.capitalize()}" уже существует!'
-                return render(request, 'add_medicament/fail_add.html', {'message': message, 'medicament': medicament})
+                return render(request,
+                              'add_medicament/fail_add.html',
+                              {'message': message, 'medicament': medicament})
     else:
         form = AddMedicamentForm()
-    return render(request, 'add_medicament/add_medicament.html', {'form': form, 'message': message})
+    return render(request,
+                  'add_medicament/add_medicament.html',
+                  {'form': form, 'message': message})

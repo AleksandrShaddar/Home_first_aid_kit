@@ -21,7 +21,8 @@ class AddMedicamentForm(forms.Form):
     category = forms.CharField(
         max_length=2000,
         widget=forms.Textarea(
-            attrs={'class': "form-control", 'placeholder': 'Укажите подходящие категории'}
+            attrs={'class': "form-control",
+                   'placeholder': 'Укажите подходящие категории'}
         ), label='Категория'
     )
     image = forms.ImageField(required=False, label='Изображение')

@@ -22,11 +22,14 @@ def login_user(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('main'))
             else:
-                message = 'Пользователя с такими данными не существует. Попробуйте еще раз!'
-                return render(request, 'authentication/login.html', {'message': message, 'form': form})
+                message = (f'Пользователя с такими данными не существует.' 
+                           f'Попробуйте еще раз!')
+                return render(request, 'authentication/login.html',
+                              {'message': message, 'form': form})
     else:
         form = AuthenticationForm()
-    return render(request, 'authentication/login.html', {'message': message, 'form': form})
+    return render(request, 'authentication/login.html',
+                  {'message': message, 'form': form})
 
 
 def logout_user(request):
@@ -45,7 +48,9 @@ def register(request):
             return render(request, 'authentication/register_done.html')
     else:
         form = RegisterUserForm()
-    return render(request, 'authentication/register.html', {'form': form})
+    return render(request,
+                  'authentication/register.html',
+                  {'form': form})
 
 
 def password_reset(request):

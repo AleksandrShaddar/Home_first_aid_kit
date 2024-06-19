@@ -16,5 +16,6 @@ class Medicament(models.Model):
     medicament_user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (f'Наименование: {self.name}, Количество: {self.quantity}, Годен до: {self.expiration_date} '
+        return (f'Наименование: {self.name}, Количество: {self.quantity}, '
+                f'Годен до: {self.expiration_date}, '
                 f'Тип {self.type_medicament}, Категория {self.category}')

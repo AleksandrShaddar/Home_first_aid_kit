@@ -10,11 +10,13 @@ class AuthenticationForm(forms.Form):
 class RegisterUserForm(forms.ModelForm):
     username = forms.CharField(max_length=50, label='Логин')
     password = forms.CharField(widget=forms.PasswordInput(), label='Пароль')
-    password2 = forms.CharField(widget=forms.PasswordInput(), label='Повторите пароль')
+    password2 = forms.CharField(widget=forms.PasswordInput(),
+                                label='Повторите пароль')
 
     class Meta:
         model = get_user_model()
-        fields = ['username', 'email', 'first_name', 'last_name', 'password', 'password2']
+        fields = ['username', 'email', 'first_name',
+                  'last_name', 'password', 'password2']
         labels = {
             'email': 'E-mail',
             'first_name': 'Имя',
@@ -39,8 +41,10 @@ class ResetPasswordForm(forms.Form):
     first_name = forms.CharField(max_length=50, label='Имя')
     last_name = forms.CharField(max_length=50, label='Фамилия')
     email = forms.CharField(max_length=50, label='Эл. почта')
-    password = forms.CharField(widget=forms.PasswordInput(), label='Новый пароль')
-    password2 = forms.CharField(widget=forms.PasswordInput(), label='Повторите пароль')
+    password = forms.CharField(widget=forms.PasswordInput(),
+                               label='Новый пароль')
+    password2 = forms.CharField(widget=forms.PasswordInput(),
+                                label='Повторите пароль')
 
     def clean_password2(self):
         cd = self.cleaned_data

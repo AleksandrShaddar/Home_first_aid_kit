@@ -41,19 +41,21 @@ def change_medicament(request, medicament_id):
             if image is not None:
                 medicament.image = image
             medicament.save()
-            message = f'Медикамент "{medicament.name.capitalize()}" успешно изменен!'
+            message = (f'Медикамент "{medicament.name.capitalize()}" '
+                       f'успешно изменен!')
             return render(request,
                           'remove_and_change/success_change.html',
                           {'message': message, 'medicament': medicament})
     else:
-        form = AddMedicamentForm(initial={'name': medicament.name.capitalize(),
-                                          'quantity': medicament.quantity,
-                                          'expiration_date': medicament.expiration_date,
-                                          'instruction': medicament.instruction,
-                                          'type_medicament': medicament.type_medicament.capitalize(),
-                                          'category': medicament.category.capitalize()
-                                          }
-                                 )
+        form = AddMedicamentForm(
+            initial={'name': medicament.name.capitalize(),
+                     'quantity': medicament.quantity,
+                     'expiration_date': medicament.expiration_date,
+                     'instruction': medicament.instruction,
+                     'type_medicament': medicament.type_medicament.capitalize(),
+                     'category': medicament.category.capitalize()
+                     }
+        )
     return render(request,
                   'remove_and_change/change_medicament.html',
                   {'message': message, 'medicament': medicament, 'form': form})
